@@ -1,17 +1,25 @@
-public class gamemain {
+public class GameMain {
    static int GRIDSIZE = 10;
     // This is the main class for the game conway's game of life
     //rule 1: any live cell with fewer than two live neighbors dies, as if by underpopulation
     //rule 2: any live cell with two or three live neighbors lives on to the next generation
     //rule 3: any live cell with more than three live neighbors dies, as if by overpopulation
     //rule 4: any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction
-    int [][] gameGrid = new int[GRIDSIZE][GRIDSIZE];
-    public static void main(String[] args){
-  
-   
-}
 
- static void neighborCheck(int [][] gameGrid){
+    public static void main(String[] args){
+        //printing grid
+        GameMain game = new GameMain();
+        int [][] gameGrid = new int[GRIDSIZE][GRIDSIZE];
+        game.gridPrint(gameGrid);
+}
+static void gridPrint(int[][] gameGrid){ //prints grid
+    for(int i = 0; i < GRIDSIZE; i++){
+        for(int j = 0; j < GRIDSIZE; j++){
+            System.out.print(gameGrid[i][j] + " ");
+        }
+        System.out.println();
+    }
+ /*static void neighborCheck(){
     for(int i = 0; i < GRIDSIZE; i++){
         for(int j = 0; j < GRIDSIZE; j++){
             int neighbors = 0;
@@ -55,5 +63,6 @@ public class gamemain {
         }
     }
 
+}*/
 }
 }
