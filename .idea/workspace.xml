@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="fixed cells not generating by adding temporary array with neighbour counts">
+    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="Commented out debug lines">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697294391813</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commented out debug lines">
+      <created>1697294797485</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697294797485</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,7 +144,8 @@
     <MESSAGE value="seperated cell generation and neighbor counting into two functions" />
     <MESSAGE value="still not generating cells changed to both gen and count in one loop not having own loops" />
     <MESSAGE value="fixed cells not generating by adding temporary array with neighbour counts" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed cells not generating by adding temporary array with neighbour counts" />
+    <MESSAGE value="Commented out debug lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented out debug lines" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
