@@ -9,7 +9,7 @@ public class GameMain {
     //rule 4: any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction
 
     public static void main(String[] args) {
-
+        GameMain game = new GameMain();
         //printing grid
         int[][] gameGrid = new int[GRIDSIZE][GRIDSIZE];
         GameMain.gridPrint(gameGrid);
@@ -24,14 +24,20 @@ public class GameMain {
             gameGrid[y][x] = 1;
             GameMain.gridPrint(gameGrid);
         }
+
         System.out.println("how many generations would you like to simulate?");
         int numGens = input.nextInt();
         for (int i = 0; i < numGens; i++) {
             System.out.println("generation " + (i + 1));
-            int neighborCount = GameMain.neighborCheck(gameGrid);
-            cellGeneration(neighborCount, gameGrid);
-            GameMain.gridPrint(gameGrid);
 
+            for (int x = 0; x < GRIDSIZE; x++){
+                for (int y = 0; y< GRIDSIZE; y++){
+                    int neighborCount = game.neighborCheck(gameGrid, x, y);
+                    GameMain.cellGeneration(neighborCount, gameGrid, x, y);
+                }
+            }
+
+            GameMain.gridPrint(gameGrid);
             int secondsToSleep = 1;
             try {
                 Thread.sleep(secondsToSleep * 1000);
@@ -52,11 +58,8 @@ public class GameMain {
     }
 
     //checking neighbours
-    static int neighborCheck(int[][] gameGrid) {
+    public int neighborCheck(int[][] gameGrid, int i, int j) {
         int neighbors = 0;
-        for (int i = 0; i < gameGrid.length; i++) {
-            for (int j = 0; j < gameGrid.length; j++) {
-                int cell = gameGrid[i][j];
                 if (i > 0 && j > 0 && gameGrid[i - 1][j - 1] == 1) {
                     neighbors++;
                 }
@@ -82,14 +85,13 @@ public class GameMain {
                     neighbors++;
                 }
 
-            }
-        }
+
+
         return neighbors;
     }
 
-    static void cellGeneration(int neighborCount, int[][] gameGrid) {
-        for (int i = 0; i < gameGrid.length; i++) {
-            for (int j = 0; j < gameGrid.length; j++) {
+     public static void cellGeneration(int neighborCount, int[][] gameGrid, int i, int j) {
+
                 int cell = gameGrid[i][j];
                 if (cell == 1 && neighborCount < 2) {
                     gameGrid[i][j] = 0;
@@ -100,7 +102,5 @@ public class GameMain {
                 if (cell == 0 && neighborCount == 3) {
                     gameGrid[i][j] = 1;
                 }
-            }
-        }
     }
 }

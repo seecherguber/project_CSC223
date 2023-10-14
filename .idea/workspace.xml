@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="seperated cell generation and neighbor counting into two functions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMain.java" afterDir="false" />
+    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="still not generating cells changed to both gen and count in one loop not having own loops">
+      <change beforePath="$PROJECT_DIR$/src/gamemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697288639042</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="still not generating cells changed to both gen and count in one loop not having own loops">
+      <created>1697290359890</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697290359890</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,7 +120,8 @@
     <MESSAGE value="added number of generations selection and simulation" />
     <MESSAGE value="fixed out of bounds exception in neighbour check" />
     <MESSAGE value="seperated cell generation and neighbor counting into two functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="seperated cell generation and neighbor counting into two functions" />
+    <MESSAGE value="still not generating cells changed to both gen and count in one loop not having own loops" />
+    <option name="LAST_COMMIT_MESSAGE" value="still not generating cells changed to both gen and count in one loop not having own loops" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
