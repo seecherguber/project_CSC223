@@ -29,14 +29,18 @@ public class GameMain {
         int numGens = input.nextInt();
         for (int i = 0; i < numGens; i++) {
             System.out.println("generation " + (i + 1));
-
+            int[][] tempGrid = new int[GRIDSIZE][GRIDSIZE];
             for (int x = 0; x < GRIDSIZE; x++){
                 for (int y = 0; y< GRIDSIZE; y++){
-                    int neighborCount = game.neighborCheck(gameGrid, x, y);
-                    GameMain.cellGeneration(neighborCount, gameGrid, x, y);
+                    int neighbors = game.neighborCheck(gameGrid, x, y);
+                    tempGrid[x][y] = neighbors;
                 }
             }
-
+            for (int x = 0; x < GRIDSIZE; x++){
+                for (int y = 0; y< GRIDSIZE; y++){
+                    game.cellGeneration(tempGrid, gameGrid, x, y);
+                }
+            }
             GameMain.gridPrint(gameGrid);
             int secondsToSleep = 1;
             try {
@@ -58,41 +62,47 @@ public class GameMain {
     }
 
     //checking neighbours
-    public int neighborCheck(int[][] gameGrid, int i, int j) {
+      int neighborCheck(int[][] gameGrid, int i, int j) {
         int neighbors = 0;
-                if (i > 0 && j > 0 && gameGrid[i - 1][j - 1] == 1) {
-                    neighbors++;
+                if (i > 0) {
+                    neighbors += gameGrid[i - 1][j]; //cell above
+                    System.out.println("cell above"+gameGrid[i - 1][j]+neighbors);
+                    if(j > 0) {
+                        neighbors += gameGrid[i - 1][j - 1]; //cell above and to the left
+                        System.out.println("cell above and to the left"+gameGrid[i - 1][j - 1]+neighbors);
+                    }
+                    if(j < GRIDSIZE - 1) {
+                        neighbors += gameGrid[i - 1][j + 1]; //cell above and to the right
+                        System.out.println("cell above and to the right"+gameGrid[i - 1][j + 1]+neighbors);
+                    }
                 }
-                if (i > 0 && gameGrid[i - 1][j] == 1) {
-                    neighbors++;
+                if (i < GRIDSIZE - 1) {
+                    neighbors += gameGrid[i + 1][j]; //cell below
+                    System.out.println("cell below"+gameGrid[i+1][j]+neighbors);
+                    if(j > 0) {
+                        neighbors += gameGrid[i + 1][j - 1]; //cell below and to the left
+                        System.out.println("cell below and to the left"+gameGrid[i + 1][j - 1]+neighbors);
+                    }
+                    if(j < GRIDSIZE - 1) {
+                        neighbors += gameGrid[i + 1][j + 1]; //cell below and to the right
+                        System.out.println("cell below and to the right"+gameGrid[i + 1][j + 1]+neighbors);
+                    }
                 }
-                if (i > 0 && j < gameGrid.length - 1 && gameGrid[i - 1][j + 1] == 1) {
-                    neighbors++;
+                if(j > 0) {
+                    neighbors += gameGrid[i][j - 1]; //cell to the left
+                    System.out.println("cell to the left"+gameGrid[i][j - 1]+neighbors);
                 }
-                if (j > 0 && gameGrid[i][j - 1] == 1) {
-                    neighbors++;
+                if(j < GRIDSIZE - 1) {
+                    neighbors += gameGrid[i][j + 1]; //cell to the right
+                    System.out.println("cell to the right"+gameGrid[i][j + 1]+neighbors);
                 }
-                if (j < gameGrid.length - 1 && gameGrid[i][j + 1] == 1) {
-                    neighbors++;
-                }
-                if (i < gameGrid.length - 1 && j > 0 && gameGrid[i + 1][j - 1] == 1) {
-                    neighbors++;
-                }
-                if (i < gameGrid.length - 1 && gameGrid[i + 1][j] == 1) {
-                    neighbors++;
-                }
-                if (i < gameGrid.length - 1 && j < gameGrid.length - 1 && gameGrid[i + 1][j + 1] == 1) {
-                    neighbors++;
-                }
-
-
-
         return neighbors;
     }
 
-     public static void cellGeneration(int neighborCount, int[][] gameGrid, int i, int j) {
+     public static void cellGeneration(int[][] tempGrid, int[][] gameGrid, int i, int j) {
 
                 int cell = gameGrid[i][j];
+                int neighborCount = tempGrid[i][j];
                 if (cell == 1 && neighborCount < 2) {
                     gameGrid[i][j] = 0;
                 }
