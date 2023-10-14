@@ -1,5 +1,7 @@
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 public class GameMain {
-   static int GRIDSIZE = 10;
+    static int GRIDSIZE = 10;
     // This is the main class for the game conway's game of life
     //rule 1: any live cell with fewer than two live neighbors dies, as if by underpopulation
     //rule 2: any live cell with two or three live neighbors lives on to the next generation
@@ -7,19 +9,40 @@ public class GameMain {
     //rule 4: any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction
 
     public static void main(String[] args){
+
         //printing grid
         GameMain game = new GameMain();
         int [][] gameGrid = new int[GRIDSIZE][GRIDSIZE];
         game.gridPrint(gameGrid);
-}
-static void gridPrint(int[][] gameGrid){ //prints grid
-    for(int i = 0; i < GRIDSIZE; i++){
-        for(int j = 0; j < GRIDSIZE; j++){
-            System.out.print(gameGrid[i][j] + " ");
+        System.out.println("how many cells would you like to start with?");
+        Scanner input = new Scanner(System.in);
+        int numCells = input.nextInt();
+        for(int i = 0; i < numCells; i++){
+            System.out.println("enter the x coordinate of cell " + (i+1));
+            int x = input.nextInt();
+            System.out.println("enter the y coordinate of cell " + (i+1));
+            int y = input.nextInt();
+            gameGrid[x][y] = 1;
+            game.gridPrint(gameGrid);
         }
-        System.out.println();
+        System.out.println("how many generations would you like to simulate?");
+        int numGens = input.nextInt();
+        for(int i = 0; i < numGens; i++){
+            game.neighborCheck(gameGrid);
+            game.gridPrint(gameGrid);
+            try{TimeUnit.SECONDS.sleep(2);} catch(InterruptedException e){};
+        }
+}
+    static void gridPrint(int[][] gameGrid) { //prints grid
+        for (int i = 0; i < GRIDSIZE; i++) {
+            for (int j = 0; j < GRIDSIZE; j++) {
+                System.out.print(gameGrid[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
- /*static void neighborCheck(){
+    //checking neighbours
+    static void neighborCheck(int[][] gameGrid){
     for(int i = 0; i < GRIDSIZE; i++){
         for(int j = 0; j < GRIDSIZE; j++){
             int neighbors = 0;
@@ -63,6 +86,5 @@ static void gridPrint(int[][] gameGrid){ //prints grid
         }
     }
 
-}*/
 }
 }
