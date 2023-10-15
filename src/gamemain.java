@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class GameMain {
     static int GRIDSIZE = 10;
+   static char cellAliveChar = '*';
+   static char cellDeadChar  =  'O';
+   static long secondsToSleep = 1;
     // This is the main class for the game conway's game of life
     //rule 1: any live cell with fewer than two live neighbors dies, as if by underpopulation
     //rule 2: any live cell with two or three live neighbors lives on to the next generation
@@ -11,9 +14,7 @@ public class GameMain {
     public static void main(String[] args) {
         GameMain game = new GameMain();
         //printing grid
-
-        System.out.println("Welcome to Conway's Game of Life!");
-        System.out.println("press 1 to start a new game, press 2 to quit");
+        System.out.println("press 1 to start a new game, press 2 to edit settings, press 3 to exit");
         Scanner keyboard = new Scanner(System.in);
         int choice = keyboard.nextInt();
         switch (choice) {
@@ -21,11 +22,10 @@ public class GameMain {
                 game.gameStart();
                 break;
             case 2:
-                System.out.println("Thanks for playing!");
-                break;
-            default:
-                System.out.println("invalid input");
-                break;
+                settings();
+            case 3:
+                System.out.println("Goodbye and thank you for playing!");
+                System.exit(0);
         }
     }
         public void gameStart () {
@@ -36,9 +36,17 @@ public class GameMain {
             int numCells = input.nextInt();
             for (int i = 0; i < numCells; i++) {
                 System.out.println("enter the x coordinate of cell " + (i + 1));
-                int x = input.nextInt() - 1;
+                int x = input.nextInt()-1;
+                if (x > GRIDSIZE - 1) {
+                    System.out.println("invalid coordinate");
+                    main(null);
+                }
                 System.out.println("enter the y coordinate of cell " + (i + 1));
-                int y = input.nextInt() - 1;
+                int y = input.nextInt()-1;
+                if (y > GRIDSIZE - 1) {
+                    System.out.println("invalid coordinate");
+                    main(null);
+                }
                 gameGrid[y][x] = 1;
                 GameMain.gridPrint(gameGrid);
             }
@@ -60,7 +68,6 @@ public class GameMain {
                     }
                 }
                 GameMain.gridPrint(gameGrid);
-                int secondsToSleep = 1;
                 try {
                     Thread.sleep(secondsToSleep * 1000);
                 } catch (InterruptedException ie) {
@@ -73,7 +80,11 @@ public class GameMain {
         static void gridPrint ( int[][] gameGrid){ //prints grid
             for (int i = 0; i < GRIDSIZE; i++) {
                 for (int j = 0; j < GRIDSIZE; j++) {
-                    System.out.print(gameGrid[i][j] + " ");
+                    if (gameGrid[i][j] == 1) {
+                        System.out.print(cellAliveChar+" ");
+                    } else {
+                        System.out.print(cellDeadChar+ " ");
+                    }
                 }
                 System.out.println();
             }
@@ -131,4 +142,55 @@ public class GameMain {
                 gameGrid[i][j] = 1;
             }
         }
+    static void settings(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("press 1 to change the size of the grid, press 2 to change the character for a live cell, press 3 to change the character for a dead cell, press 4 to change the time between generations press 5 to return to the main menu");
+        int choice = input.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println("enter the size of the grid");
+               int size = input.nextInt();
+                if (size < 10) {
+                    System.out.println("invalid size");
+                    settings();
+                }
+                else if (size > 100) {
+                    System.out.println("invalid size");
+                    settings();
+                }
+                else{
+                    GRIDSIZE = size;
+                }
+                settings();
+                break;
+            case 2:
+                System.out.println("enter the character for a live cell");
+                cellAliveChar = input.next().charAt(0);
+                settings();
+                break;
+            case 3:
+                System.out.println("enter the character for a dead cell");
+                cellDeadChar = input.next().charAt(0);
+                settings();
+                break;
+            case 4:
+                System.out.println("enter the time between generations in seconds (1-10)");
+                if (secondsToSleep < 1) {
+                    System.out.println("invalid time");
+                    settings();
+                }
+                else if (secondsToSleep > 10) {
+                    System.out.println("invalid time");
+                    settings();
+                }
+                else
+                secondsToSleep = input.nextInt();
+                settings();
+                break;
+            case 5:
+                main(null);
+                break;
+        }
     }
+    }
+    

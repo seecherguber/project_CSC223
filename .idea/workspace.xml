@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="added menu and changed game loop to method gameStart">
+    <list default="true" id="52b74acb-827f-4b36-aebd-46eda3dc982a" name="Changes" comment="added changable gridsize and if statement to catch inputs larger than grid or under 0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamemain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697295835275</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added changable gridsize and if statement to catch inputs larger than grid or under 0">
+      <created>1697296766310</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697296766310</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,7 +160,8 @@
     <MESSAGE value="fixed cells not generating by adding temporary array with neighbour counts" />
     <MESSAGE value="Commented out debug lines" />
     <MESSAGE value="added menu and changed game loop to method gameStart" />
-    <option name="LAST_COMMIT_MESSAGE" value="added menu and changed game loop to method gameStart" />
+    <MESSAGE value="added changable gridsize and if statement to catch inputs larger than grid or under 0" />
+    <option name="LAST_COMMIT_MESSAGE" value="added changable gridsize and if statement to catch inputs larger than grid or under 0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
